@@ -1,0 +1,26 @@
+{
+	"onboarding_language_title": "Welcome ✨",
+	"onboarding_language_subtitle": "Before we start, I need to know which language to speak to you in.",
+	"onboarding_language_option_fr": "🇫🇷 Français",
+	"onboarding_language_option_en": "🇬🇧 English",
+
+	"onboarding_gender_title": "One quick thing before we continue…",
+	"onboarding_gender_subtitle": "How should I refer to you?",
+	"onboarding_gender_option_female": "Woman",
+	"onboarding_gender_option_male": "Man",
+
+	"onboarding_name_title": "So, what should I call you?",
+	"onboarding_name_hint": "Little tip: using the nickname Tonton Jiee usually calls you might make a few surprises even more personal. 😉",
+	"onboarding_name_placeholder": "Your name or nickname",
+	"onboarding_name_button_continue": "CONTINUE",
+
+	"home_welcome_body": "This is your game. ✨\n\nTonton Jiee made it just for you.\n\nThere will be words to uncover, a few traps, choices to make…\n\nand a few surprises you probably won't see coming. 😌",
+	"home_welcome_question_female": "Ready?",
+	"home_welcome_question_male": "Ready?",
+	"home_welcome_button_start": "START",
+
+	"menu_continue": "✨ CONTINUE",
+	"menu_journey": "📖 MY JOURNEY",
+	"menu_rewards": "🎁 MY REWARDS",
+	"menu_settings": "⚙️ SETTINGS"
+}
