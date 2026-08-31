@@ -23,24 +23,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Link export templates
+      - name: Setup Godot environment (fix $HOME mismatch on GitHub Actions)
         run: |
-          mkdir -v -p ~/.local/share/godot/export_templates
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mkdir -v -p ~/.config/
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable \
              ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable 2>/dev/null || true
-
-      - name: Generate debug keystore
-        run: |
-          mkdir -p ~/.android
-          keytool -genkey -v \
-            -keystore ~/.android/debug.keystore \
-            -storepass android -alias androiddebugkey \
-            -keypass android -keyalg RSA -keysize 2048 \
-            -validity 10000 \
-            -dname "CN=Tonton Jiee,O=Tonton Jiee,C=FR"
-
-      - name: Import project (generates .godot cache)
-        run: godot --headless --verbose --editor --quit
+          mv /root/.config/godot ~/.config/godot 2>/dev/null || true
+          echo 'export/android/java_sdk_path = "/usr/lib/jvm/java-17-openjdk-amd64"' >> ~/.config/godot/editor_settings-${GODOT_VERSION}.tres
 
       - name: Export APK
         run: |
