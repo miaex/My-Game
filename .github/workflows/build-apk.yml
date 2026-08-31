@@ -40,12 +40,12 @@ jobs:
             -dname "CN=Tonton Jiee,O=Tonton Jiee,C=FR"
 
       - name: Import project (generates .godot cache)
-        run: godot --headless --editor --quit-after 200 || true
+        run: godot --headless --verbose --editor --quit
 
       - name: Export APK
         run: |
           mkdir -v -p build/android
-          godot --headless --export-release "Android" build/android/${EXPORT_NAME}.apk
+          godot --headless --verbose --export-debug "Android" build/android/${EXPORT_NAME}.apk
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
