@@ -59,19 +59,4 @@ jobs:
           tag_name: build-${{ github.run_number }}
           name: "Tonton Jiee — build #${{ github.run_number }}"
           files: build/android/${{ env.EXPORT_NAME }}.apk
-          make_latest: true          mkdir -v -p build/android
-          godot --headless --verbose --export-debug "Android" build/android/${EXPORT_NAME}.apk
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.EXPORT_NAME }}-apk
-          path: build/android/${{ env.EXPORT_NAME }}.apk
-
-      - name: Publish GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: build-${{ github.run_number }}
-          name: "Tonton Jiee — build #${{ github.run_number }}"
-          files: build/android/${{ env.EXPORT_NAME }}.apk
           make_latest: true
