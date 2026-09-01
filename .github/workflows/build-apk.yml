@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  GODOT_VERSION: 4.3
+  GODOT_VERSION: 4.4
   EXPORT_NAME: tonton-jiee
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
     name: Export Android APK
     runs-on: ubuntu-22.04
     container:
-      image: barichello/godot-ci:4.3
+      image: barichello/godot-ci:4.4
     permissions:
       contents: write
     steps:
@@ -32,23 +32,7 @@ jobs:
           mv /root/.config/godot ~/.config/godot 2>/dev/null || true
           echo 'export/android/java_sdk_path = "/usr/lib/jvm/java-17-openjdk-amd64"' >> ~/.config/godot/editor_settings-${GODOT_VERSION}.tres
 
-      - name: DEBUG - show what Godot actually sees
-        run: |
-          echo "--- HOME is: $HOME ---"
-          echo "--- Contents of /root/.config/godot (if still there) ---"
-          ls -la /root/.config/godot/ 2>/dev/null || echo "(does not exist)"
-          echo "--- Contents of \$HOME/.config/godot ---"
-          ls -la ~/.config/godot/ 2>/dev/null || echo "(does not exist)"
-          echo "--- editor_settings file content ---"
-          cat ~/.config/godot/editor_settings-${GODOT_VERSION}.tres 2>/dev/null || echo "(file not found)"
-          echo "--- keystore files on disk ---"
-          find / -iname "*.keystore" 2>/dev/null
-          echo "--- keytool location ---"
-          which keytool
-          echo "--- keytool -list on /root/debug.keystore ---"
-          keytool -list -keystore /root/debug.keystore -storepass android -alias androiddebugkey || echo "keytool -list FAILED"
-
-      - name: Regenerate debug keystore (avoids format mismatch with Godot's validator)
+      - name: Regenerate debug keystore
         run: |
           rm -f /root/debug.keystore
           keytool -genkeypair -v \
@@ -59,27 +43,10 @@ jobs:
             -keyalg RSA -keysize 2048 -validity 9999 \
             -dname "CN=Android Debug,O=Android,C=US"
 
-      - name: Export unsigned APK
+      - name: Export APK
         run: |
           mkdir -v -p build/android
-          godot --headless --verbose --export-debug "Android" build/android/${EXPORT_NAME}-unsigned.apk
-
-      - name: Align and sign APK manually (bypasses Godot's buggy keystore check)
-        run: |
-          ZIPALIGN=$(find /usr/lib/android-sdk /opt -name zipalign -type f 2>/dev/null | head -n1)
-          APKSIGNER=$(find /usr/lib/android-sdk /opt -name apksigner -type f 2>/dev/null | head -n1)
-          echo "zipalign: $ZIPALIGN"
-          echo "apksigner: $APKSIGNER"
-          "$ZIPALIGN" -f -v -p 4 \
-            build/android/${EXPORT_NAME}-unsigned.apk \
-            build/android/${EXPORT_NAME}-aligned.apk
-          "$APKSIGNER" sign \
-            --ks /root/debug.keystore \
-            --ks-pass pass:android \
-            --key-pass pass:android \
-            --ks-key-alias androiddebugkey \
-            --out build/android/${EXPORT_NAME}.apk \
-            build/android/${EXPORT_NAME}-aligned.apk
+          godot --headless --verbose --export-debug "Android" build/android/${EXPORT_NAME}.apk
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
