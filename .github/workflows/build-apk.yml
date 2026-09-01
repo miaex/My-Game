@@ -32,7 +32,23 @@ jobs:
           mv /root/.config/godot ~/.config/godot 2>/dev/null || true
           echo 'export/android/java_sdk_path = "/usr/lib/jvm/java-17-openjdk-amd64"' >> ~/.config/godot/editor_settings-${GODOT_VERSION}.tres
 
-      - name: Regenerate debug keystore
+      - name: DEBUG - show what Godot actually sees
+        run: |
+          echo "--- HOME is: $HOME ---"
+          echo "--- Contents of /root/.config/godot (if still there) ---"
+          ls -la /root/.config/godot/ 2>/dev/null || echo "(does not exist)"
+          echo "--- Contents of \$HOME/.config/godot ---"
+          ls -la ~/.config/godot/ 2>/dev/null || echo "(does not exist)"
+          echo "--- editor_settings file content ---"
+          cat ~/.config/godot/editor_settings-${GODOT_VERSION}.tres 2>/dev/null || echo "(file not found)"
+          echo "--- keystore files on disk ---"
+          find / -iname "*.keystore" 2>/dev/null
+          echo "--- keytool location ---"
+          which keytool
+          echo "--- keytool -list on /root/debug.keystore ---"
+          keytool -list -keystore /root/debug.keystore -storepass android -alias androiddebugkey || echo "keytool -list FAILED"
+
+      - name: Regenerate debug keystore (avoids format mismatch with Godot's validator)
         run: |
           rm -f /root/debug.keystore
           keytool -genkeypair -v \
