@@ -6,16 +6,17 @@ on:
   workflow_dispatch:
 
 env:
-  GODOT_VERSION: 4.3
+  GODOT_VERSION: 4.6.1
+  GODOT_MAJOR_MINOR: 4.6
   EXPORT_NAME: tonton-jiee
 
 jobs:
   export-android:
     name: Export Android APK
     runs-on: ubuntu-22.04
-    timeout-minutes: 20
+    timeout-minutes: 10
     container:
-      image: barichello/godot-ci:4.3
+      image: barichello/godot-ci:4.6.1
     permissions:
       contents: write
     steps:
@@ -31,7 +32,7 @@ jobs:
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable \
              ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable 2>/dev/null || true
           mv /root/.config/godot ~/.config/godot 2>/dev/null || true
-          echo 'export/android/java_sdk_path = "/usr/lib/jvm/java-17-openjdk-amd64"' >> ~/.config/godot/editor_settings-${GODOT_VERSION}.tres
+          echo "export/android/java_sdk_path = \"/usr/lib/jvm/java-17-openjdk-amd64\"" >> ~/.config/godot/editor_settings-${GODOT_MAJOR_MINOR}.tres
 
       - name: Regenerate debug keystore
         run: |
@@ -43,17 +44,6 @@ jobs:
             -storepass android -keypass android \
             -keyalg RSA -keysize 2048 -validity 9999 \
             -dname "CN=Android Debug,O=Android,C=US"
-
-      - name: Accept Android SDK licenses (prevents Gradle hanging forever)
-        run: |
-          mkdir -p "$ANDROID_HOME/licenses"
-          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
-          echo "84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-          echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license"
-          echo "ANDROID_HOME resolved to: $ANDROID_HOME"
-
-      - name: Install Android Gradle build template
-        run: godot --headless --install-android-build-template
 
       - name: Export APK
         run: |
