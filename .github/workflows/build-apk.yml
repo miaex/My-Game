@@ -43,13 +43,27 @@ jobs:
             -keyalg RSA -keysize 2048 -validity 9999 \
             -dname "CN=Android Debug,O=Android,C=US"
 
-      - name: Install Android Gradle build template
-        run: godot --headless --install-android-build-template
-
-      - name: Export APK
+      - name: Export unsigned release APK
         run: |
           mkdir -v -p build/android
-          godot --headless --verbose --export-debug "Android" build/android/${EXPORT_NAME}.apk
+          godot --headless --verbose --export-release "Android" build/android/${EXPORT_NAME}-unsigned.apk
+
+      - name: Align and sign APK manually
+        run: |
+          ZIPALIGN=$(find /usr/lib/android-sdk /opt -name zipalign -type f 2>/dev/null | head -n1)
+          APKSIGNER=$(find /usr/lib/android-sdk /opt -name apksigner -type f 2>/dev/null | head -n1)
+          echo "zipalign: $ZIPALIGN"
+          echo "apksigner: $APKSIGNER"
+          "$ZIPALIGN" -f -v -p 4 \
+            build/android/${EXPORT_NAME}-unsigned.apk \
+            build/android/${EXPORT_NAME}-aligned.apk
+          "$APKSIGNER" sign \
+            --ks /root/debug.keystore \
+            --ks-pass pass:android \
+            --key-pass pass:android \
+            --ks-key-alias androiddebugkey \
+            --out build/android/${EXPORT_NAME}.apk \
+            build/android/${EXPORT_NAME}-aligned.apk
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
