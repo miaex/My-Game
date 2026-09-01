@@ -13,6 +13,7 @@ jobs:
   export-android:
     name: Export Android APK
     runs-on: ubuntu-22.04
+    timeout-minutes: 20
     container:
       image: barichello/godot-ci:4.3
     permissions:
@@ -42,6 +43,14 @@ jobs:
             -storepass android -keypass android \
             -keyalg RSA -keysize 2048 -validity 9999 \
             -dname "CN=Android Debug,O=Android,C=US"
+
+      - name: Accept Android SDK licenses (prevents Gradle hanging forever)
+        run: |
+          mkdir -p "$ANDROID_HOME/licenses"
+          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
+          echo "84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+          echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license"
+          echo "ANDROID_HOME resolved to: $ANDROID_HOME"
 
       - name: Install Android Gradle build template
         run: godot --headless --install-android-build-template
