@@ -5,61 +5,71 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-env:
-  GODOT_VERSION: 4.6.1
-  GODOT_MAJOR_MINOR: 4.6
-  EXPORT_NAME: tonton-jiee
-
 jobs:
   export-android:
     name: Export Android APK
     runs-on: ubuntu-22.04
-    timeout-minutes: 10
-    container:
-      image: barichello/godot-ci:4.6.1
+    timeout-minutes: 20
     permissions:
       contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
-          fetch-depth: 0
+          distribution: temurin
+          java-version: '17'
 
-      - name: Setup Godot environment (fix HOME mismatch on GitHub Actions)
-        run: |
-          mkdir -v -p ~/.local/share/godot/export_templates/
-          mkdir -v -p ~/.config/
-          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable \
-             ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable 2>/dev/null || true
-          mv /root/.config/godot ~/.config/godot 2>/dev/null || true
-          echo "export/android/java_sdk_path = \"/usr/lib/jvm/java-17-openjdk-amd64\"" >> ~/.config/godot/editor_settings-${GODOT_MAJOR_MINOR}.tres
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
 
-      - name: Regenerate debug keystore
+      - name: Generate debug keystore
         run: |
-          rm -f /root/debug.keystore
           keytool -genkeypair -v \
-            -keystore /root/debug.keystore \
+            -keystore $HOME/debug.keystore \
             -storetype JKS \
             -alias androiddebugkey \
             -storepass android -keypass android \
             -keyalg RSA -keysize 2048 -validity 9999 \
             -dname "CN=Android Debug,O=Android,C=US"
 
-      - name: Export APK
+      - name: Write Godot editor settings
         run: |
-          mkdir -v -p build/android
-          godot --headless --verbose --export-debug "Android" build/android/${EXPORT_NAME}.apk
+          mkdir -p ~/.config/godot
+          cat > ~/.config/godot/editor_settings-4.tres << SETTINGSEOF
+          [gd_resource type="EditorSettings" format=3]
+
+          [resource]
+          export/android/android_sdk_path = "$ANDROID_HOME"
+          export/android/debug_keystore = "$HOME/debug.keystore"
+          export/android/debug_keystore_user = "androiddebugkey"
+          export/android/debug_keystore_pass = "android"
+          export/android/java_sdk_path = "$JAVA_HOME"
+          SETTINGSEOF
+
+      - name: Export APK
+        id: export
+        uses: firebelley/godot-export@v8.0.0
+        with:
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+          relative_project_path: ./
+          use_preset_export_path: true
+          export_debug: true
+          verbose: true
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.EXPORT_NAME }}-apk
-          path: build/android/${{ env.EXPORT_NAME }}.apk
+          name: tonton-jiee-apk
+          path: build/android/tonton-jiee.apk
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
           name: "Tonton Jiee — build #${{ github.run_number }}"
-          files: build/android/${{ env.EXPORT_NAME }}.apk
+          files: build/android/tonton-jiee.apk
           make_latest: true
