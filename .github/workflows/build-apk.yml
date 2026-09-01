@@ -32,9 +32,34 @@ jobs:
           mv /root/.config/godot ~/.config/godot 2>/dev/null || true
           echo 'export/android/java_sdk_path = "/usr/lib/jvm/java-17-openjdk-amd64"' >> ~/.config/godot/editor_settings-${GODOT_VERSION}.tres
 
+      - name: Regenerate debug keystore (avoids format mismatch with Godot's validator)
+        run: |
+          rm -f /root/debug.keystore
+          keytool -genkeypair -v \
+            -keystore /root/debug.keystore \
+            -alias androiddebugkey \
+            -storepass android -keypass android \
+            -keyalg RSA -keysize 2048 -validity 9999 \
+            -dname "CN=Android Debug,O=Android,C=US"
+
       - name: Export APK
         run: |
           mkdir -v -p build/android
+          godot --headless --verbose --export-debug "Android" build/android/${EXPORT_NAME}.apk
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.EXPORT_NAME }}-apk
+          path: build/android/${{ env.EXPORT_NAME }}.apk
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: "Tonton Jiee — build #${{ github.run_number }}"
+          files: build/android/${{ env.EXPORT_NAME }}.apk
+          make_latest: true          mkdir -v -p build/android
           godot --headless --verbose --export-debug "Android" build/android/${EXPORT_NAME}.apk
 
       - name: Upload build artifact
