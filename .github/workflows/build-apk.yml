@@ -37,6 +37,7 @@ jobs:
           rm -f /root/debug.keystore
           keytool -genkeypair -v \
             -keystore /root/debug.keystore \
+            -storetype JKS \
             -alias androiddebugkey \
             -storepass android -keypass android \
             -keyalg RSA -keysize 2048 -validity 9999 \
