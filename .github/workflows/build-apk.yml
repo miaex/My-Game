@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  GODOT_VERSION: 4.4
+  GODOT_VERSION: 4.3
   EXPORT_NAME: tonton-jiee
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
     name: Export Android APK
     runs-on: ubuntu-22.04
     container:
-      image: barichello/godot-ci:4.4
+      image: barichello/godot-ci:4.3
     permissions:
       contents: write
     steps:
@@ -42,6 +42,9 @@ jobs:
             -storepass android -keypass android \
             -keyalg RSA -keysize 2048 -validity 9999 \
             -dname "CN=Android Debug,O=Android,C=US"
+
+      - name: Install Android Gradle build template
+        run: godot --headless --install-android-build-template
 
       - name: Export APK
         run: |
