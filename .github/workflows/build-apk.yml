@@ -64,12 +64,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tonton-jiee-apk
-          path: build/android/tonton-jiee.apk
+          path: build/android/**/*.apk
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
           name: "Tonton Jiee — build #${{ github.run_number }}"
-          files: build/android/tonton-jiee.apk
+          files: build/android/**/*.apk
           make_latest: true
