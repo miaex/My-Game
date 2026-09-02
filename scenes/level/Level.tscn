@@ -9,17 +9,96 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1")
 
-[node name="PlaceholderLabel" type="Label" parent="."]
-unique_name_in_owner = true
+[node name="Background" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Écran de niveau (choix de catégorie + anagramme)
-— à implémenter —"
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="CategoryPanel" type="VBoxContainer" parent="Margin"]
+unique_name_in_owner = true
+theme_override_constants/separation = 24
+
+[node name="CategoryTitle" type="Label" parent="Margin/CategoryPanel"]
+unique_name_in_owner = true
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="CategoryScroll" type="ScrollContainer" parent="Margin/CategoryPanel"]
+size_flags_vertical = 3
+
+[node name="CategoryGrid" type="GridContainer" parent="Margin/CategoryPanel/CategoryScroll"]
+unique_name_in_owner = true
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+
+[node name="BtnBackToHome" type="Button" parent="Margin/CategoryPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+
+[node name="AnagramPanel" type="VBoxContainer" parent="Margin"]
+unique_name_in_owner = true
+visible = false
+theme_override_constants/separation = 28
+
+[node name="HintCard" type="PanelContainer" parent="Margin/AnagramPanel"]
+size_flags_horizontal = 3
+
+[node name="HintLabel" type="Label" parent="Margin/AnagramPanel/HintCard"]
+unique_name_in_owner = true
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="AnswerScroll" type="ScrollContainer" parent="Margin/AnagramPanel"]
+size_flags_horizontal = 3
+
+[node name="AnswerRow" type="HBoxContainer" parent="Margin/AnagramPanel/AnswerScroll"]
+unique_name_in_owner = true
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="TilesScroll" type="ScrollContainer" parent="Margin/AnagramPanel"]
+size_flags_horizontal = 3
+
+[node name="TilesRow" type="HBoxContainer" parent="Margin/AnagramPanel/TilesScroll"]
+unique_name_in_owner = true
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="FeedbackLabel" type="Label" parent="Margin/AnagramPanel"]
+unique_name_in_owner = true
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonRow" type="HBoxContainer" parent="Margin/AnagramPanel"]
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="BtnClear" type="Button" parent="Margin/AnagramPanel/ButtonRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+
+[node name="BtnValidate" type="Button" parent="Margin/AnagramPanel/ButtonRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+disabled = true
+
+[node name="BtnBack" type="Button" parent="Margin/AnagramPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+
+[connection signal="pressed" from="Margin/CategoryPanel/BtnBackToHome" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Margin/AnagramPanel/ButtonRow/BtnClear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="Margin/AnagramPanel/ButtonRow/BtnValidate" to="." method="_on_validate_pressed"]
+[connection signal="pressed" from="Margin/AnagramPanel/BtnBack" to="." method="_on_back_pressed"]

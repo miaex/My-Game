@@ -1,0 +1,34 @@
+[
+	{ "category": "relations", "language": "fr", "word": "AMOUR", "hint": "Quelque chose que tu mérites chaque jour." },
+	{ "category": "relations", "language": "fr", "word": "COMPLICE", "hint": "Ce que vous êtes, elle et toi, sans avoir besoin de mots." },
+	{ "category": "relations", "language": "fr", "word": "AMITIE", "hint": "Un lien qui ne demande rien en retour." },
+	{ "category": "relations", "language": "en", "word": "LOVE", "hint": "Something you deserve every single day." },
+	{ "category": "relations", "language": "en", "word": "FRIEND", "hint": "Someone who stays even when it's not convenient." },
+
+	{ "category": "compliments", "language": "fr", "word": "PERSEVERANTE", "hint": "Quelqu'un qui continue même quand c'est difficile." },
+	{ "category": "compliments", "language": "fr", "word": "BRILLANTE", "hint": "Ce que tu es, même quand tu ne le vois pas." },
+	{ "category": "compliments", "language": "fr", "word": "UNIQUE", "hint": "Il n'y en a qu'une comme toi." },
+	{ "category": "compliments", "language": "en", "word": "BRILLIANT", "hint": "What you are, even when you don't see it." },
+	{ "category": "compliments", "language": "en", "word": "UNIQUE", "hint": "There's only one of you." },
+
+	{ "category": "emotions", "language": "fr", "word": "JOIE", "hint": "Ce que tu ressens dans tes meilleurs moments." },
+	{ "category": "emotions", "language": "fr", "word": "COURAGE", "hint": "Ce qu'il te faut pour avancer malgré la peur." },
+	{ "category": "emotions", "language": "fr", "word": "CONFIANCE", "hint": "Ce que tu devrais avoir en toi, plus souvent." },
+	{ "category": "emotions", "language": "en", "word": "JOY", "hint": "What you feel in your best moments." },
+	{ "category": "emotions", "language": "en", "word": "COURAGE", "hint": "What it takes to move forward despite fear." },
+
+	{ "category": "mystere", "language": "fr", "word": "SECRET", "hint": "Quelque chose que tout le monde ne sait pas." },
+	{ "category": "mystere", "language": "fr", "word": "INDICE", "hint": "Un petit signe qui mène à la vérité." },
+	{ "category": "mystere", "language": "en", "word": "SECRET", "hint": "Something not everyone knows." },
+	{ "category": "mystere", "language": "en", "word": "CLUE", "hint": "A small sign that leads to the truth." },
+
+	{ "category": "audace", "language": "fr", "word": "DEFI", "hint": "Ce que tu relèves quand tu as peur, mais que tu le fais quand même." },
+	{ "category": "audace", "language": "fr", "word": "COURAGEUSE", "hint": "Ce que tu es quand tu oses, même en tremblant." },
+	{ "category": "audace", "language": "en", "word": "BOLD", "hint": "What you are when you dare, even while shaking." },
+	{ "category": "audace", "language": "en", "word": "DARE", "hint": "What you take on even when you're afraid." },
+
+	{ "category": "personnalite", "language": "fr", "word": "GENEREUSE", "hint": "Une qualité qui se voit dans les petits gestes." },
+	{ "category": "personnalite", "language": "fr", "word": "SINCERE", "hint": "Ce que tu es, sans filtre." },
+	{ "category": "personnalite", "language": "en", "word": "GENEROUS", "hint": "A quality that shows in small gestures." },
+	{ "category": "personnalite", "language": "en", "word": "SINCERE", "hint": "What you are, without a filter." }
+]

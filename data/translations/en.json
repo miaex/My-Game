@@ -22,5 +22,12 @@
 	"menu_continue": "✨ CONTINUE",
 	"menu_journey": "📖 MY JOURNEY",
 	"menu_rewards": "🎁 MY REWARDS",
-	"menu_settings": "⚙️ SETTINGS"
+	"menu_settings": "⚙️ SETTINGS",
+
+	"level_choose_category_title": "Choose your theme ✨",
+	"level_back_to_home": "BACK",
+	"level_clear": "CLEAR",
+	"level_validate": "SUBMIT",
+	"level_success_message": "There you go. 😌",
+	"level_failure_message": "Nope. 😏 But you weren't far off."
 }
