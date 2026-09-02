@@ -26,6 +26,10 @@ window/handheld/orientation="portrait"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[gui]
+
+theme/custom="res://assets/theme/default_theme.tres"
+
 [rendering]
 
 renderer/rendering_method="mobile"
