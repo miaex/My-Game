@@ -52,7 +52,7 @@ var statistics: Dictionary = {
 
 
 func _ready() -> void:
-	DisplayServer.screen_set_orientation(DisplayServer.SCREEN_ORIENTATION_PORTRAIT)
+	DisplayServer.screen_set_orientation(DisplayServer.SCREEN_PORTRAIT)
 
 	_load_categories()
 	_load_translations()
