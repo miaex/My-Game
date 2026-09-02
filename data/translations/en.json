@@ -29,5 +29,10 @@
 	"level_clear": "CLEAR",
 	"level_validate": "SUBMIT",
 	"level_success_message": "There you go. 😌",
-	"level_failure_message": "Nope. 😏 But you weren't far off."
+	"level_failure_message": "Nope. 😏 But you weren't far off.",
+
+	"reward_title": "Chapter {chapter} complete ✨",
+	"reward_continue": "CONTINUE",
+	"reward_message_affectionate": "{player_name},\n\nyou just finished this chapter…\n\nand I hope you already know one thing:\n\nyou're probably far more capable than you give yourself credit for.\n\nKeep going. There's more waiting for you. ❤️",
+	"reward_message_playful": "{player_name},\n\n10 words solved, and I have to say I'm pretty impressed. 😏\n\nYou're getting dangerously good at this little game…\n\nLet's see if you can keep it up next chapter? 😌"
 }

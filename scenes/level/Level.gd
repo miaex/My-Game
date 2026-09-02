@@ -158,6 +158,27 @@ func _pulse_feedback() -> void:
 	tween.tween_property(feedback_label, "scale", Vector2(1.0, 1.0), 0.35)
 
 
+func _animate_slot_pop(slot_index: int) -> void:
+	if slot_index < 0 or slot_index >= slot_labels.size():
+		return
+	var panel: PanelContainer = slot_labels[slot_index]["panel"]
+	panel.pivot_offset = panel.size / 2.0
+	panel.scale = Vector2(0.4, 0.4)
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_BACK)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(panel, "scale", Vector2(1.0, 1.0), 0.3)
+
+
+func _shake_answer_row() -> void:
+	var original_pos: Vector2 = answer_row.position
+	var tween := create_tween()
+	tween.tween_property(answer_row, "position:x", original_pos.x - 12, 0.06)
+	tween.tween_property(answer_row, "position:x", original_pos.x + 12, 0.06)
+	tween.tween_property(answer_row, "position:x", original_pos.x - 8, 0.06)
+	tween.tween_property(answer_row, "position:x", original_pos.x, 0.06)
+
+
 # ---------------------------------------------------------------------------
 # ÉCRAN 2 : anagramme
 # ---------------------------------------------------------------------------
@@ -251,6 +272,7 @@ func _on_tile_pressed(tile_index: int) -> void:
 	answer_letters.append(tile_index)
 	tile_buttons[tile_index].disabled = true
 	_refresh_slots()
+	_animate_slot_pop(answer_letters.size() - 1)
 	btn_validate.disabled = answer_letters.size() != shuffled_letters.size()
 
 
@@ -292,16 +314,28 @@ func _on_success() -> void:
 	feedback_label.text = Loc.t("level_success_message")
 	_pulse_feedback()
 	GameData.statistics.successes = int(GameData.statistics.get("successes", 0)) + 1
-	GameData.progress.current_level = int(GameData.progress.get("current_level", 1)) + 1
-	SaveManager.save_game()
 
+	var new_level: int = int(GameData.progress.get("current_level", 1)) + 1
 	await get_tree().create_timer(1.1).timeout
-	_show_category_panel()
+
+	if new_level > 10:
+		var completed_chapter: int = int(GameData.progress.get("current_chapter", 1))
+		if not GameData.progress.unlocked_rewards.has(completed_chapter):
+			GameData.progress.unlocked_rewards.append(completed_chapter)
+		GameData.progress.current_chapter = completed_chapter + 1
+		GameData.progress.current_level = 1
+		SaveManager.save_game()
+		SceneRouter.go_to("reward")
+	else:
+		GameData.progress.current_level = new_level
+		SaveManager.save_game()
+		_show_category_panel()
 
 
 func _on_failure() -> void:
 	feedback_label.text = Loc.t("level_failure_message")
 	_pulse_feedback()
+	_shake_answer_row()
 	GameData.statistics.failures = int(GameData.statistics.get("failures", 0)) + 1
 
 	for btn in tile_buttons:

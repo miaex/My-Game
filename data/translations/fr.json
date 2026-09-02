@@ -29,5 +29,10 @@
 	"level_clear": "EFFACER",
 	"level_validate": "VALIDER",
 	"level_success_message": "Voilà. 😌",
-	"level_failure_message": "Nope. 😏 Mais tu n'étais pas loin."
+	"level_failure_message": "Nope. 😏 Mais tu n'étais pas loin.",
+
+	"reward_title": "Chapitre {chapter} terminé ✨",
+	"reward_continue": "CONTINUER",
+	"reward_message_affectionate": "{player_name},\n\ntu viens de terminer ce chapitre…\n\net j'espère que tu comprends déjà une chose :\n\ntu es probablement beaucoup plus capable que tu ne le crois.\n\nContinue. La suite t'attend. ❤️",
+	"reward_message_playful": "{player_name},\n\n10 mots trouvés, et je dois dire que je suis plutôt impressionné. 😏\n\nTu commences à devenir dangereusement douée à ce petit jeu…\n\nOn voit si tu tiens la distance au prochain chapitre ? 😌"
 }
