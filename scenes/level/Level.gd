@@ -110,6 +110,7 @@ func _show_category_panel() -> void:
 	category_panel.visible = true
 	anagram_panel.visible = false
 	_populate_categories()
+	_animate_panel_appear(category_panel)
 
 
 func _populate_categories() -> void:
@@ -122,7 +123,9 @@ func _populate_categories() -> void:
 		var btn := Button.new()
 		var label: String = cat.get("label_fr", "") if lang == "fr" else cat.get("label_en", "")
 		btn.text = "%s  %s" % [cat.get("emoji", ""), label]
-		btn.custom_minimum_size = Vector2(0, 100)
+		btn.custom_minimum_size = Vector2(0, 90)
+		btn.clip_text = false
+		btn.add_theme_font_size_override("font_size", 28)
 		btn.pressed.connect(_on_category_selected.bind(cat.get("id", "")))
 		category_grid.add_child(btn)
 
@@ -138,6 +141,21 @@ func _on_category_selected(category_id: String) -> void:
 func _show_anagram_panel() -> void:
 	category_panel.visible = false
 	anagram_panel.visible = true
+	_animate_panel_appear(anagram_panel)
+
+
+func _animate_panel_appear(panel: Control) -> void:
+	panel.modulate.a = 0.0
+	var tween := create_tween()
+	tween.tween_property(panel, "modulate:a", 1.0, 0.28)
+
+
+func _pulse_feedback() -> void:
+	feedback_label.scale = Vector2(0.85, 0.85)
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_BACK)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(feedback_label, "scale", Vector2(1.0, 1.0), 0.35)
 
 
 # ---------------------------------------------------------------------------
@@ -272,6 +290,7 @@ func _on_validate_pressed() -> void:
 
 func _on_success() -> void:
 	feedback_label.text = Loc.t("level_success_message")
+	_pulse_feedback()
 	GameData.statistics.successes = int(GameData.statistics.get("successes", 0)) + 1
 	GameData.progress.current_level = int(GameData.progress.get("current_level", 1)) + 1
 	SaveManager.save_game()
@@ -282,6 +301,7 @@ func _on_success() -> void:
 
 func _on_failure() -> void:
 	feedback_label.text = Loc.t("level_failure_message")
+	_pulse_feedback()
 	GameData.statistics.failures = int(GameData.statistics.get("failures", 0)) + 1
 
 	for btn in tile_buttons:

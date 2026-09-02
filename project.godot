@@ -10,6 +10,8 @@ config/name="Tonton Jiee"
 run/main_scene="res://scenes/onboarding/Onboarding.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://assets/images/icon.svg"
+boot_splash/bg_color=Color(0.976, 0.925, 0.902, 1)
+boot_splash/show_image=false
 
 [autoload]
 

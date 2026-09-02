@@ -39,7 +39,7 @@ size_flags_vertical = 3
 
 [node name="CategoryGrid" type="GridContainer" parent="Margin/CategoryPanel/CategoryScroll"]
 unique_name_in_owner = true
-columns = 2
+columns = 1
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 
