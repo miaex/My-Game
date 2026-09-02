@@ -57,22 +57,27 @@ size_flags_horizontal = 3
 
 [node name="HintLabel" type="Label" parent="Margin/AnagramPanel/HintCard"]
 unique_name_in_owner = true
+size_flags_horizontal = 3
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="AnswerScroll" type="ScrollContainer" parent="Margin/AnagramPanel"]
+custom_minimum_size = Vector2(0, 100)
 size_flags_horizontal = 3
 
 [node name="AnswerRow" type="HBoxContainer" parent="Margin/AnagramPanel/AnswerScroll"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 90)
 alignment = 1
 theme_override_constants/separation = 10
 
 [node name="TilesScroll" type="ScrollContainer" parent="Margin/AnagramPanel"]
+custom_minimum_size = Vector2(0, 100)
 size_flags_horizontal = 3
 
 [node name="TilesRow" type="HBoxContainer" parent="Margin/AnagramPanel/TilesScroll"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 90)
 alignment = 1
 theme_override_constants/separation = 10
 
