@@ -38,5 +38,5 @@ func t(key: String, vars: Dictionary = {}) -> String:
 ## GameData.profile.gender (voir §6 — le genre adapte certains accords).
 func t_gendered(key_base: String, vars: Dictionary = {}) -> String:
 	var gender: String = GameData.profile.get("gender", "female")
-	var suffix := "female" if gender == "female" else "male"
+	var suffix: String = "female" if gender == "female" else "male"
 	return t("%s_%s" % [key_base, suffix], vars)

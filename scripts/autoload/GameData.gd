@@ -57,7 +57,7 @@ func _ready() -> void:
 
 
 func _load_categories() -> void:
-	var path := "res://data/categories/categories.json"
+	var path: String = "res://data/categories/categories.json"
 	if not FileAccess.file_exists(path):
 		push_warning("GameData: categories.json introuvable (%s)" % path)
 		return
@@ -71,7 +71,7 @@ func _load_categories() -> void:
 
 func _load_translations() -> void:
 	for lang in ["fr", "en"]:
-		var path := "res://data/translations/%s.json" % lang
+		var path: String = "res://data/translations/%s.json" % lang
 		if not FileAccess.file_exists(path):
 			push_warning("GameData: fichier de traduction introuvable (%s)" % path)
 			continue
