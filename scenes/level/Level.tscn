@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scenes/level/Level.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/shared/LogoHeader.tscn" id="2"]
 
 [node name="Level" type="Control"]
 layout_mode = 3
@@ -15,95 +16,125 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="BoardMargin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 90
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="CategoryPanel" type="VBoxContainer" parent="Margin"]
-unique_name_in_owner = true
-theme_override_constants/separation = 24
+[node name="BoardCenter" type="CenterContainer" parent="BoardMargin"]
 
-[node name="CategoryTitle" type="Label" parent="Margin/CategoryPanel"]
-unique_name_in_owner = true
-horizontal_alignment = 1
-autowrap_mode = 3
+[node name="Board" type="VBoxContainer" parent="BoardMargin/BoardCenter"]
+custom_minimum_size = Vector2(600, 0)
+theme_override_constants/separation = 26
 
-[node name="CategoryScroll" type="ScrollContainer" parent="Margin/CategoryPanel"]
-size_flags_vertical = 3
+[node name="Logo" parent="BoardMargin/BoardCenter/Board" instance=ExtResource("2")]
+layout_mode = 2
 
-[node name="CategoryGrid" type="GridContainer" parent="Margin/CategoryPanel/CategoryScroll"]
-unique_name_in_owner = true
-columns = 1
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 16
+[node name="HintRow" type="HBoxContainer" parent="BoardMargin/BoardCenter/Board"]
+theme_override_constants/separation = 12
 
-[node name="BtnBackToHome" type="Button" parent="Margin/CategoryPanel"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
-
-[node name="AnagramPanel" type="VBoxContainer" parent="Margin"]
-unique_name_in_owner = true
-visible = false
-theme_override_constants/separation = 28
-
-[node name="HintCard" type="PanelContainer" parent="Margin/AnagramPanel"]
+[node name="HintCard" type="PanelContainer" parent="BoardMargin/BoardCenter/Board/HintRow"]
 size_flags_horizontal = 3
 
-[node name="HintLabel" type="Label" parent="Margin/AnagramPanel/HintCard"]
+[node name="HintLabel" type="Label" parent="BoardMargin/BoardCenter/Board/HintRow/HintCard"]
 unique_name_in_owner = true
 size_flags_horizontal = 3
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="AnswerScroll" type="ScrollContainer" parent="Margin/AnagramPanel"]
+[node name="BtnHint" type="Button" parent="BoardMargin/BoardCenter/Board/HintRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+text = "💡"
+
+[node name="AnswerScroll" type="ScrollContainer" parent="BoardMargin/BoardCenter/Board"]
 custom_minimum_size = Vector2(0, 100)
 size_flags_horizontal = 3
 
-[node name="AnswerRow" type="HBoxContainer" parent="Margin/AnagramPanel/AnswerScroll"]
+[node name="AnswerRow" type="HBoxContainer" parent="BoardMargin/BoardCenter/Board/AnswerScroll"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 90)
 alignment = 1
 theme_override_constants/separation = 10
 
-[node name="TilesScroll" type="ScrollContainer" parent="Margin/AnagramPanel"]
+[node name="TilesScroll" type="ScrollContainer" parent="BoardMargin/BoardCenter/Board"]
 custom_minimum_size = Vector2(0, 100)
 size_flags_horizontal = 3
 
-[node name="TilesRow" type="HBoxContainer" parent="Margin/AnagramPanel/TilesScroll"]
+[node name="TilesRow" type="HBoxContainer" parent="BoardMargin/BoardCenter/Board/TilesScroll"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 90)
 alignment = 1
 theme_override_constants/separation = 10
 
-[node name="FeedbackLabel" type="Label" parent="Margin/AnagramPanel"]
+[node name="FeedbackLabel" type="Label" parent="BoardMargin/BoardCenter/Board"]
 unique_name_in_owner = true
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="ButtonRow" type="HBoxContainer" parent="Margin/AnagramPanel"]
+[node name="ButtonRow" type="HBoxContainer" parent="BoardMargin/BoardCenter/Board"]
 alignment = 1
 theme_override_constants/separation = 16
 
-[node name="BtnClear" type="Button" parent="Margin/AnagramPanel/ButtonRow"]
+[node name="BtnClear" type="Button" parent="BoardMargin/BoardCenter/Board/ButtonRow"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 70)
 
-[node name="BtnValidate" type="Button" parent="Margin/AnagramPanel/ButtonRow"]
+[node name="BtnValidate" type="Button" parent="BoardMargin/BoardCenter/Board/ButtonRow"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 70)
 disabled = true
 
-[node name="BtnBack" type="Button" parent="Margin/AnagramPanel"]
+[node name="BtnBack" type="Button" parent="BoardMargin/BoardCenter/Board"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 70)
 
-[connection signal="pressed" from="Margin/CategoryPanel/BtnBackToHome" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Margin/AnagramPanel/ButtonRow/BtnClear" to="." method="_on_clear_pressed"]
-[connection signal="pressed" from="Margin/AnagramPanel/ButtonRow/BtnValidate" to="." method="_on_validate_pressed"]
-[connection signal="pressed" from="Margin/AnagramPanel/BtnBack" to="." method="_on_back_pressed"]
+[node name="CategoryOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="ColorRect" parent="CategoryOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.976, 0.925, 0.902, 0.94)
+
+[node name="OverlayCenter" type="CenterContainer" parent="CategoryOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="OverlayBox" type="VBoxContainer" parent="CategoryOverlay/OverlayCenter"]
+custom_minimum_size = Vector2(620, 0)
+theme_override_constants/separation = 22
+
+[node name="CategoryTitle" type="Label" parent="CategoryOverlay/OverlayCenter/OverlayBox"]
+unique_name_in_owner = true
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CategoryGrid" type="GridContainer" parent="CategoryOverlay/OverlayCenter/OverlayBox"]
+unique_name_in_owner = true
+columns = 2
+theme_override_constants/h_separation = 14
+theme_override_constants/v_separation = 14
+
+[node name="BtnBackToHome" type="Button" parent="CategoryOverlay/OverlayCenter/OverlayBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+
+[connection signal="pressed" from="BoardMargin/BoardCenter/Board/HintRow/BtnHint" to="." method="_on_hint_pressed"]
+[connection signal="pressed" from="BoardMargin/BoardCenter/Board/ButtonRow/BtnClear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="BoardMargin/BoardCenter/Board/ButtonRow/BtnValidate" to="." method="_on_validate_pressed"]
+[connection signal="pressed" from="BoardMargin/BoardCenter/Board/BtnBack" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CategoryOverlay/OverlayCenter/OverlayBox/BtnBackToHome" to="." method="_on_back_pressed"]

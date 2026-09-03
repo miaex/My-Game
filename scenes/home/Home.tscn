@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scenes/home/Home.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/shared/LogoHeader.tscn" id="2"]
 
 [node name="Home" type="Control"]
 layout_mode = 3
@@ -14,6 +15,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="TopLogo" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+theme_override_constants/margin_top = 50
+
+[node name="Logo" parent="TopLogo" instance=ExtResource("2")]
+layout_mode = 2
 
 [node name="WelcomePanel" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -54,6 +64,15 @@ offset_left = -220.0
 offset_right = 220.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="GreetingLabel" type="Label" parent="MenuPanel"]
+unique_name_in_owner = true
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="MenuPanel"]
+custom_minimum_size = Vector2(0, 12)
 
 [node name="BtnContinue" type="Button" parent="MenuPanel"]
 unique_name_in_owner = true

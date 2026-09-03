@@ -14,9 +14,12 @@
 	"onboarding_name_placeholder": "Your name or nickname",
 	"onboarding_name_button_continue": "CONTINUE",
 
-	"home_welcome_body": "This is your game. ✨\n\nTonton Jiee made it just for you.\n\nThere will be words to uncover, a few traps, choices to make…\n\nand a few surprises you probably won't see coming. 😌",
+	"home_welcome_body_female": "Hi {player_name}, so happy to see you again! ✨\n\nThis is your game.\n\nTonton Jiee made it just for you.\n\nThere will be words to uncover, a few traps, choices to make…\n\nand a few surprises you probably won't see coming. 😌",
+	"home_welcome_body_male": "Hi {player_name}, so happy to see you again! ✨\n\nThis is your game.\n\nTonton Jiee made it just for you.\n\nThere will be words to uncover, a few traps, choices to make…\n\nand a few surprises you probably won't see coming. 😌",
 	"home_welcome_question_female": "Ready?",
 	"home_welcome_question_male": "Ready?",
+	"menu_greeting_female": "Great to see you again, {player_name}!",
+	"menu_greeting_male": "Great to see you again, {player_name}!",
 	"home_welcome_button_start": "START",
 
 	"menu_continue": "✨ CONTINUE",
@@ -34,5 +37,12 @@
 	"reward_title": "Chapter {chapter} complete ✨",
 	"reward_continue": "CONTINUE",
 	"reward_message_affectionate": "{player_name},\n\nyou just finished this chapter…\n\nand I hope you already know one thing:\n\nyou're probably far more capable than you give yourself credit for.\n\nKeep going. There's more waiting for you. ❤️",
-	"reward_message_playful": "{player_name},\n\n10 words solved, and I have to say I'm pretty impressed. 😏\n\nYou're getting dangerously good at this little game…\n\nLet's see if you can keep it up next chapter? 😌"
+	"reward_message_playful": "{player_name},\n\n10 words solved, and I have to say I'm pretty impressed. 😏\n\nYou're getting dangerously good at this little game…\n\nLet's see if you can keep it up next chapter? 😌",
+
+	"journey_title": "📖 My Journey",
+	"journey_stats": "Chapter {chapter}, level {level} of 10\n\nWords solved: {successes}\nMistakes: {failures}\n\nChapters unlocked: {rewards_count}",
+
+	"rewards_title": "🎁 My Rewards",
+	"rewards_empty": "No rewards unlocked yet.\n\nFinish a full chapter (10 levels) to unlock one.",
+	"rewards_entry": "✨ Chapter {chapter} unlocked"
 }

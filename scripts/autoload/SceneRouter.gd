@@ -9,6 +9,8 @@ const SCENES := {
 	"level": "res://scenes/level/Level.tscn",
 	"reward": "res://scenes/reward/Reward.tscn",
 	"settings": "res://scenes/settings/Settings.tscn",
+	"journey": "res://scenes/journey/Journey.tscn",
+	"rewards": "res://scenes/rewards/RewardsList.tscn",
 }
 
 var _fade_layer: CanvasLayer
@@ -27,6 +29,21 @@ func _ready() -> void:
 	_fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_fade_rect.modulate.a = 0.0
 	_fade_layer.add_child(_fade_rect)
+
+
+## Bouton "retour" physique Android : ramène vers l'accueil au lieu de
+## quitter brutalement l'application (sauf si on y est déjà, auquel cas
+## le comportement par défaut du système reprend la main).
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		var current_scene := get_tree().current_scene
+		if current_scene == null:
+			return
+		var scene_path: String = current_scene.scene_file_path
+		if scene_path == SCENES.get("home", ""):
+			return
+		go_to("home")
+		get_viewport().set_input_as_handled()
 
 
 func go_to(scene_key: String) -> void:

@@ -14,9 +14,12 @@
 	"onboarding_name_placeholder": "Ton prénom ou surnom",
 	"onboarding_name_button_continue": "CONTINUER",
 
-	"home_welcome_body": "Ceci est ton jeu. ✨\n\nTonton Jiee l'a créé spécialement pour toi.\n\nIl y aura des mots à découvrir, quelques pièges, des choix à faire…\n\net quelques surprises que tu ne verras probablement pas venir. 😌",
+	"home_welcome_body_female": "Salut {player_name}, heureuse de te revoir ! ✨\n\nCeci est ton jeu.\n\nTonton Jiee l'a créé spécialement pour toi.\n\nIl y aura des mots à découvrir, quelques pièges, des choix à faire…\n\net quelques surprises que tu ne verras probablement pas venir. 😌",
+	"home_welcome_body_male": "Salut {player_name}, heureux de te revoir ! ✨\n\nCeci est ton jeu.\n\nTonton Jiee l'a créé spécialement pour toi.\n\nIl y aura des mots à découvrir, quelques pièges, des choix à faire…\n\net quelques surprises que tu ne verras probablement pas venir. 😌",
 	"home_welcome_question_female": "Prête ?",
 	"home_welcome_question_male": "Prêt ?",
+	"menu_greeting_female": "Ravie de te revoir, {player_name} !",
+	"menu_greeting_male": "Ravi de te revoir, {player_name} !",
 	"home_welcome_button_start": "COMMENCER",
 
 	"menu_continue": "✨ CONTINUER",
@@ -34,5 +37,12 @@
 	"reward_title": "Chapitre {chapter} terminé ✨",
 	"reward_continue": "CONTINUER",
 	"reward_message_affectionate": "{player_name},\n\ntu viens de terminer ce chapitre…\n\net j'espère que tu comprends déjà une chose :\n\ntu es probablement beaucoup plus capable que tu ne le crois.\n\nContinue. La suite t'attend. ❤️",
-	"reward_message_playful": "{player_name},\n\n10 mots trouvés, et je dois dire que je suis plutôt impressionné. 😏\n\nTu commences à devenir dangereusement douée à ce petit jeu…\n\nOn voit si tu tiens la distance au prochain chapitre ? 😌"
+	"reward_message_playful": "{player_name},\n\n10 mots trouvés, et je dois dire que je suis plutôt impressionné. 😏\n\nTu commences à devenir dangereusement douée à ce petit jeu…\n\nOn voit si tu tiens la distance au prochain chapitre ? 😌",
+
+	"journey_title": "📖 Mon parcours",
+	"journey_stats": "Chapitre {chapter}, niveau {level} sur 10\n\nMots trouvés : {successes}\nErreurs : {failures}\n\nChapitres débloqués : {rewards_count}",
+
+	"rewards_title": "🎁 Mes récompenses",
+	"rewards_empty": "Aucune récompense débloquée pour l'instant.\n\nTermine un chapitre complet (10 niveaux) pour en débloquer une.",
+	"rewards_entry": "✨ Chapitre {chapter} débloqué"
 }
