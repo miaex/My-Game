@@ -23,6 +23,9 @@
 	"menu_continue": "✨ CONTINUER",
 	"menu_journey": "📖 MON PARCOURS",
 	"menu_rewards": "🎁 MES RÉCOMPENSES",
+	"menu_journey_short": "Parcours",
+	"menu_rewards_short": "Récompenses",
+	"home_progress_label": "Chapitre {chapter} · niveau {level} sur 10",
 	"menu_settings": "⚙️ PARAMÈTRES",
 
 	"level_choose_category_title": "Choisis ton thème ✨",

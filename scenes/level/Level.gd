@@ -154,6 +154,7 @@ func _populate_categories() -> void:
 
 
 func _on_category_selected(category_id: String) -> void:
+	Audio.play_click()
 	GameData.register_category_choice(category_id)
 	current_category = category_id
 	_pick_word_for_category(category_id)
@@ -341,6 +342,7 @@ func _on_tile_pressed(tile_index: int) -> void:
 	_refresh_slots()
 	_animate_slot_pop(free_positions[target_k])
 	_update_validate_state()
+	Audio.play_tile()
 
 
 func _on_slot_pressed(free_index: int) -> void:
@@ -397,6 +399,7 @@ func _on_hint_pressed() -> void:
 	var k: int = slot_fill.find(-1)
 	if k == -1:
 		return
+	Audio.play_click()
 
 	var target_pos: int = free_positions[k]
 	var needed_letter: String = current_word[target_pos]
@@ -433,6 +436,7 @@ func _on_validate_pressed() -> void:
 func _on_success() -> void:
 	feedback_label.text = Loc.t("level_success_message")
 	_pulse_feedback()
+	Audio.play_success()
 	GameData.statistics.successes = int(GameData.statistics.get("successes", 0)) + 1
 
 	var new_level: int = int(GameData.progress.get("current_level", 1)) + 1
@@ -456,6 +460,7 @@ func _on_failure() -> void:
 	feedback_label.text = Loc.t("level_failure_message")
 	_pulse_feedback()
 	_shake_answer_row()
+	Audio.play_failure()
 	GameData.statistics.failures = int(GameData.statistics.get("failures", 0)) + 1
 	_on_clear_pressed()
 
