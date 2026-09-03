@@ -23,9 +23,6 @@
 	"menu_continue": "✨ CONTINUE",
 	"menu_journey": "📖 MY JOURNEY",
 	"menu_rewards": "🎁 MY REWARDS",
-	"menu_journey_short": "Journey",
-	"menu_rewards_short": "Rewards",
-	"home_progress_label": "Chapter {chapter} · level {level} of 10",
 	"menu_settings": "⚙️ SETTINGS",
 
 	"level_choose_category_title": "Choose your theme ✨",

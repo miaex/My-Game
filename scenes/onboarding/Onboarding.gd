@@ -22,6 +22,8 @@ extends Control
 
 
 func _ready() -> void:
+	Decor.add_sparkles(self)
+
 	# Si l'onboarding a déjà été fait, on saute directement à l'accueil.
 	if SaveManager.has_save() and SaveManager.load_game() and GameData.profile.get("onboarding_done", false):
 		SceneRouter.go_to("home")

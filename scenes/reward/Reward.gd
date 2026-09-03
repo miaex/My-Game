@@ -12,7 +12,6 @@ extends Control
 
 
 func _ready() -> void:
-	Audio.play_reward()
 	_style_background()
 
 	var chapter_completed: int = int(GameData.progress.get("current_chapter", 2)) - 1
