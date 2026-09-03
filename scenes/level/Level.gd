@@ -92,11 +92,27 @@ func _build_dynamic_styles() -> void:
 	_slot_style_locked.set_corner_radius_all(12)
 	_slot_style_locked.set_content_margin_all(12)
 
+	# Bouton indice flottant : cercle doré avec ombre.
+	var hint_style := StyleBoxFlat.new()
+	hint_style.bg_color = Color(0.85, 0.62, 0.35)
+	hint_style.set_corner_radius_all(40)
+	hint_style.shadow_color = Color(0.545, 0.271, 0.361, 0.25)
+	hint_style.shadow_size = 8
+	hint_style.shadow_offset = Vector2(0, 4)
+	btn_hint.add_theme_stylebox_override("normal", hint_style)
+	btn_hint.add_theme_stylebox_override("hover", hint_style)
+	var hint_style_disabled := StyleBoxFlat.new()
+	hint_style_disabled.bg_color = Color(0.867, 0.831, 0.816, 0.7)
+	hint_style_disabled.set_corner_radius_all(40)
+	btn_hint.add_theme_stylebox_override("disabled", hint_style_disabled)
+	_pulse_node(btn_hint)
+
 
 func _style_background() -> void:
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.976, 0.925, 0.902)
 	background.add_theme_stylebox_override("panel", style)
+	Decor.add_sparkles(self)
 
 
 func _load_words() -> void:
@@ -138,6 +154,7 @@ func _populate_categories() -> void:
 
 
 func _on_category_selected(category_id: String) -> void:
+	Audio.play_click()
 	GameData.register_category_choice(category_id)
 	current_category = category_id
 	_pick_word_for_category(category_id)
@@ -325,6 +342,7 @@ func _on_tile_pressed(tile_index: int) -> void:
 	_refresh_slots()
 	_animate_slot_pop(free_positions[target_k])
 	_update_validate_state()
+	Audio.play_tile()
 
 
 func _on_slot_pressed(free_index: int) -> void:
@@ -381,6 +399,7 @@ func _on_hint_pressed() -> void:
 	var k: int = slot_fill.find(-1)
 	if k == -1:
 		return
+	Audio.play_click()
 
 	var target_pos: int = free_positions[k]
 	var needed_letter: String = current_word[target_pos]
@@ -417,6 +436,7 @@ func _on_validate_pressed() -> void:
 func _on_success() -> void:
 	feedback_label.text = Loc.t("level_success_message")
 	_pulse_feedback()
+	Audio.play_success()
 	GameData.statistics.successes = int(GameData.statistics.get("successes", 0)) + 1
 
 	var new_level: int = int(GameData.progress.get("current_level", 1)) + 1
@@ -440,6 +460,7 @@ func _on_failure() -> void:
 	feedback_label.text = Loc.t("level_failure_message")
 	_pulse_feedback()
 	_shake_answer_row()
+	Audio.play_failure()
 	GameData.statistics.failures = int(GameData.statistics.get("failures", 0)) + 1
 	_on_clear_pressed()
 
@@ -472,6 +493,16 @@ func _shake_answer_row() -> void:
 	tween.tween_property(answer_row, "position:x", original_pos.x + 12, 0.06)
 	tween.tween_property(answer_row, "position:x", original_pos.x - 8, 0.06)
 	tween.tween_property(answer_row, "position:x", original_pos.x, 0.06)
+
+
+## Petite pulsation continue pour donner de la vie à un bouton (voir
+## demande de dynamisme). Le tween boucle indéfiniment.
+func _pulse_node(node: Control) -> void:
+	node.pivot_offset = node.size / 2.0
+	var tween := create_tween()
+	tween.set_loops()
+	tween.tween_property(node, "scale", Vector2(1.08, 1.08), 0.7).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(node, "scale", Vector2(1.0, 1.0), 0.7).set_trans(Tween.TRANS_SINE)
 
 
 func _on_back_pressed() -> void:

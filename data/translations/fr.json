@@ -14,17 +14,18 @@
 	"onboarding_name_placeholder": "Ton prénom ou surnom",
 	"onboarding_name_button_continue": "CONTINUER",
 
-	"home_welcome_body_female": "Salut {player_name}, heureuse de te revoir ! ✨\n\nCeci est ton jeu.\n\nTonton Jiee l'a créé spécialement pour toi.\n\nIl y aura des mots à découvrir, quelques pièges, des choix à faire…\n\net quelques surprises que tu ne verras probablement pas venir. 😌",
-	"home_welcome_body_male": "Salut {player_name}, heureux de te revoir ! ✨\n\nCeci est ton jeu.\n\nTonton Jiee l'a créé spécialement pour toi.\n\nIl y aura des mots à découvrir, quelques pièges, des choix à faire…\n\net quelques surprises que tu ne verras probablement pas venir. 😌",
+	"home_welcome_body": "Salut {player_name}, heureux de te revoir ! ✨\n\nCeci est ton jeu.\n\nTonton Jiee l'a créé spécialement pour toi.\n\nIl y aura des mots à découvrir, quelques pièges, des choix à faire…\n\net quelques surprises que tu ne verras probablement pas venir. 😌",
 	"home_welcome_question_female": "Prête ?",
 	"home_welcome_question_male": "Prêt ?",
-	"menu_greeting_female": "Ravie de te revoir, {player_name} !",
-	"menu_greeting_male": "Ravi de te revoir, {player_name} !",
+	"menu_greeting": "Ravi de te revoir, {player_name} !",
 	"home_welcome_button_start": "COMMENCER",
 
 	"menu_continue": "✨ CONTINUER",
 	"menu_journey": "📖 MON PARCOURS",
 	"menu_rewards": "🎁 MES RÉCOMPENSES",
+	"menu_journey_short": "Parcours",
+	"menu_rewards_short": "Récompenses",
+	"home_progress_label": "Chapitre {chapter} · niveau {level} sur 10",
 	"menu_settings": "⚙️ PARAMÈTRES",
 
 	"level_choose_category_title": "Choisis ton thème ✨",

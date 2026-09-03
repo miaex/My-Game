@@ -12,12 +12,14 @@ extends Control
 
 
 func _ready() -> void:
+	Audio.play_reward()
 	_style_background()
 
 	var chapter_completed: int = int(GameData.progress.get("current_chapter", 2)) - 1
 	title_label.text = Loc.t("reward_title", {"chapter": chapter_completed})
 	message_label.text = _build_message()
 	btn_continue.text = Loc.t("reward_continue")
+	Decor.pulse(btn_continue)
 
 	title_label.modulate.a = 0.0
 	message_label.get_parent().modulate.a = 0.0
@@ -30,6 +32,7 @@ func _style_background() -> void:
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.976, 0.925, 0.902)
 	background.add_theme_stylebox_override("panel", style)
+	Decor.add_sparkles(self)
 
 
 ## Choisit un ton de message selon les catégories les plus jouées
