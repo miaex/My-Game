@@ -79,6 +79,10 @@ unique_name_in_owner = true
 [node name="Spacer" type="Control" parent="Center/VBox"]
 custom_minimum_size = Vector2(0, 10)
 
+[node name="HowToButton" type="Button" parent="Center/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 76)
+
 [node name="ResetButton" type="Button" parent="Center/VBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 76)
@@ -90,5 +94,6 @@ custom_minimum_size = Vector2(0, 76)
 [connection signal="toggled" from="Center/VBox/SoundRow/SoundHBox/SoundToggle" to="." method="_on_sound_toggled"]
 [connection signal="toggled" from="Center/VBox/MusicRow/MusicHBox/MusicToggle" to="." method="_on_music_toggled"]
 [connection signal="toggled" from="Center/VBox/VibrationRow/VibrationHBox/VibrationToggle" to="." method="_on_vibration_toggled"]
+[connection signal="pressed" from="Center/VBox/HowToButton" to="." method="_on_howto_pressed"]
 [connection signal="pressed" from="Center/VBox/ResetButton" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Center/VBox/BackButton" to="." method="_on_back_pressed"]

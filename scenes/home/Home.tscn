@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scenes/home/Home.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/shared/LogoHeader.tscn" id="2"]
+[ext_resource type="Script" path="res://scenes/shared/EnvelopeIcon.gd" id="3"]
 
 [node name="Home" type="Control"]
 layout_mode = 3
@@ -20,22 +21,10 @@ anchor_bottom = 1.0
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 46
 
 [node name="Logo" parent="TopLogo" instance=ExtResource("2")]
 layout_mode = 2
-
-[node name="BtnSettingsTop" type="Button" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -114.0
-offset_top = 42.0
-offset_right = -30.0
-offset_bottom = 126.0
-text = "⚙"
 
 [node name="WelcomePanel" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -63,78 +52,146 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 56)
 
-[node name="MenuPanel" type="VBoxContainer" parent="."]
+[node name="MenuMargin" type="MarginContainer" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -260.0
-offset_right = 260.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 16
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
 
-[node name="GreetingLabel" type="Label" parent="MenuPanel"]
+[node name="MenuPanel" type="VBoxContainer" parent="MenuMargin"]
+theme_override_constants/separation = 22
+
+[node name="GreetingRow" type="HBoxContainer" parent="MenuMargin/MenuPanel"]
+alignment = 1
+theme_override_constants/separation = 14
+
+[node name="AvatarBadge" type="PanelContainer" parent="MenuMargin/MenuPanel/GreetingRow"]
+custom_minimum_size = Vector2(64, 64)
+
+[node name="AvatarLabel" type="Label" parent="MenuMargin/MenuPanel/GreetingRow/AvatarBadge"]
 unique_name_in_owner = true
 horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 32
+
+[node name="GreetingLabel" type="Label" parent="MenuMargin/MenuPanel/GreetingRow"]
+unique_name_in_owner = true
 autowrap_mode = 3
+theme_override_font_sizes/font_size = 36
 
-[node name="ProgressCard" type="PanelContainer" parent="MenuPanel"]
+[node name="SecretCard" type="PanelContainer" parent="MenuMargin/MenuPanel"]
 
-[node name="ProgressBox" type="VBoxContainer" parent="MenuPanel/ProgressCard"]
+[node name="SecretMargin" type="MarginContainer" parent="MenuMargin/MenuPanel/SecretCard"]
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 20
+
+[node name="SecretHBox" type="HBoxContainer" parent="MenuMargin/MenuPanel/SecretCard/SecretMargin"]
+theme_override_constants/separation = 18
+
+[node name="EnvelopeIcon" type="Control" parent="MenuMargin/MenuPanel/SecretCard/SecretMargin/SecretHBox"]
+custom_minimum_size = Vector2(64, 64)
+script = ExtResource("3")
+
+[node name="SecretVBox" type="VBoxContainer" parent="MenuMargin/MenuPanel/SecretCard/SecretMargin/SecretHBox"]
+size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="ProgressLabel" type="Label" parent="MenuPanel/ProgressCard/ProgressBox"]
+[node name="SecretTitle" type="Label" parent="MenuMargin/MenuPanel/SecretCard/SecretMargin/SecretHBox/SecretVBox"]
 unique_name_in_owner = true
-horizontal_alignment = 1
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 32
 
-[node name="ProgressBar" type="ProgressBar" parent="MenuPanel/ProgressCard/ProgressBox"]
+[node name="SecretSubtitle" type="Label" parent="MenuMargin/MenuPanel/SecretCard/SecretMargin/SecretHBox/SecretVBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 18)
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 24
+
+[node name="SecretBar" type="ProgressBar" parent="MenuMargin/MenuPanel/SecretCard/SecretMargin/SecretHBox/SecretVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
 show_percentage = false
 
-[node name="Spacer" type="Control" parent="MenuPanel"]
-custom_minimum_size = Vector2(0, 4)
+[node name="Spacer1" type="Control" parent="MenuMargin/MenuPanel"]
+size_flags_vertical = 3
 
-[node name="BtnContinue" type="Button" parent="MenuPanel"]
+[node name="BtnContinue" type="Button" parent="MenuMargin/MenuPanel"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 78)
+custom_minimum_size = Vector2(0, 84)
 
-[node name="IconRow" type="HBoxContainer" parent="MenuPanel"]
+[node name="Spacer2" type="Control" parent="MenuMargin/MenuPanel"]
+custom_minimum_size = Vector2(0, 20)
+
+[node name="BottomNav" type="PanelContainer" parent="MenuMargin/MenuPanel"]
+
+[node name="NavHBox" type="HBoxContainer" parent="MenuMargin/MenuPanel/BottomNav"]
 alignment = 1
-theme_override_constants/separation = 30
+theme_override_constants/separation = 8
 
-[node name="JourneyBox" type="VBoxContainer" parent="MenuPanel/IconRow"]
-theme_override_constants/separation = 6
+[node name="NavHome" type="VBoxContainer" parent="MenuMargin/MenuPanel/BottomNav/NavHBox"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
 
-[node name="BtnJourney" type="Button" parent="MenuPanel/IconRow/JourneyBox"]
+[node name="BtnNavHome" type="Button" parent="MenuMargin/MenuPanel/BottomNav/NavHBox/NavHome"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(0, 56)
+text = "🏠"
+
+[node name="NavHomeLabel" type="Label" parent="MenuMargin/MenuPanel/BottomNav/NavHBox/NavHome"]
+unique_name_in_owner = true
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+
+[node name="NavJourney" type="VBoxContainer" parent="MenuMargin/MenuPanel/BottomNav/NavHBox"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="BtnJourney" type="Button" parent="MenuMargin/MenuPanel/BottomNav/NavHBox/NavJourney"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
 text = "📖"
 
-[node name="JourneyLabel" type="Label" parent="MenuPanel/IconRow/JourneyBox"]
+[node name="JourneyLabel" type="Label" parent="MenuMargin/MenuPanel/BottomNav/NavHBox/NavJourney"]
 unique_name_in_owner = true
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
 
-[node name="RewardsBox" type="VBoxContainer" parent="MenuPanel/IconRow"]
-theme_override_constants/separation = 6
+[node name="NavRewards" type="VBoxContainer" parent="MenuMargin/MenuPanel/BottomNav/NavHBox"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
 
-[node name="BtnRewards" type="Button" parent="MenuPanel/IconRow/RewardsBox"]
+[node name="BtnRewards" type="Button" parent="MenuMargin/MenuPanel/BottomNav/NavHBox/NavRewards"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(0, 56)
 text = "🎁"
 
-[node name="RewardsLabel" type="Label" parent="MenuPanel/IconRow/RewardsBox"]
+[node name="RewardsLabel" type="Label" parent="MenuMargin/MenuPanel/BottomNav/NavHBox/NavRewards"]
 unique_name_in_owner = true
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
 
-[connection signal="pressed" from="BtnSettingsTop" to="." method="_on_settings_pressed"]
+[node name="NavSettings" type="VBoxContainer" parent="MenuMargin/MenuPanel/BottomNav/NavHBox"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="BtnSettingsNav" type="Button" parent="MenuMargin/MenuPanel/BottomNav/NavHBox/NavSettings"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+text = "⚙"
+
+[node name="SettingsLabel" type="Label" parent="MenuMargin/MenuPanel/BottomNav/NavHBox/NavSettings"]
+unique_name_in_owner = true
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+
 [connection signal="pressed" from="WelcomePanel/BtnStart" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MenuPanel/BtnContinue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MenuPanel/IconRow/JourneyBox/BtnJourney" to="." method="_on_journey_pressed"]
-[connection signal="pressed" from="MenuPanel/IconRow/RewardsBox/BtnRewards" to="." method="_on_rewards_pressed"]
+[connection signal="pressed" from="MenuMargin/MenuPanel/BtnContinue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MenuMargin/MenuPanel/BottomNav/NavHBox/NavJourney/BtnJourney" to="." method="_on_journey_pressed"]
+[connection signal="pressed" from="MenuMargin/MenuPanel/BottomNav/NavHBox/NavRewards/BtnRewards" to="." method="_on_rewards_pressed"]
+[connection signal="pressed" from="MenuMargin/MenuPanel/BottomNav/NavHBox/NavSettings/BtnSettingsNav" to="." method="_on_settings_pressed"]

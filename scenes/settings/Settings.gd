@@ -11,6 +11,7 @@ extends Control
 @onready var vibration_toggle: CheckButton = %VibrationToggle
 @onready var reset_button: Button = %ResetButton
 @onready var back_button: Button = %BackButton
+@onready var howto_button: Button = %HowToButton
 
 
 func _ready() -> void:
@@ -26,6 +27,7 @@ func _ready() -> void:
 	music_label.text = Loc.t("settings_music")
 	vibration_label.text = Loc.t("settings_vibration")
 	reset_button.text = Loc.t("settings_reset")
+	howto_button.text = Loc.t("settings_howto")
 	back_button.text = Loc.t("level_back_to_home")
 
 	sound_toggle.button_pressed = GameData.settings.get("sfx_enabled", true)
@@ -54,6 +56,10 @@ func _on_vibration_toggled(pressed: bool) -> void:
 	SaveManager.save_game()
 	if pressed:
 		Input.vibrate_handheld(80)
+
+
+func _on_howto_pressed() -> void:
+	SceneRouter.go_to("howtoplay")
 
 
 func _on_reset_pressed() -> void:

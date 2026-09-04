@@ -11,6 +11,7 @@ const SCENES := {
 	"settings": "res://scenes/settings/Settings.tscn",
 	"journey": "res://scenes/journey/Journey.tscn",
 	"rewards": "res://scenes/rewards/RewardsList.tscn",
+	"howtoplay": "res://scenes/howtoplay/HowToPlay.tscn",
 }
 
 var _fade_layer: CanvasLayer
