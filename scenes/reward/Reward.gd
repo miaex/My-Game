@@ -12,6 +12,7 @@ extends Control
 
 
 func _ready() -> void:
+	Audio.play_music("reward")
 	Audio.play_reward()
 	_style_background()
 

@@ -25,6 +25,7 @@ extends Control
 
 
 func _ready() -> void:
+	Audio.play_music("menu")
 	_style_background()
 	_style_icon_buttons()
 	_style_progress_bar()

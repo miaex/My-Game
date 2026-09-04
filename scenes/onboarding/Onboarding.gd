@@ -22,6 +22,7 @@ extends Control
 
 
 func _ready() -> void:
+	Audio.play_music("menu")
 	Decor.add_sparkles(self)
 
 	# Si l'onboarding a déjà été fait, on saute directement à l'accueil.

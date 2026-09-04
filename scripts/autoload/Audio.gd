@@ -12,14 +12,24 @@ const SOUNDS := {
 	"reward": "res://assets/sounds/reward.wav",
 }
 
+const MUSIC := {
+	"menu": "res://assets/music/menu_music.ogg",
+	"reward": "res://assets/music/reward_music.ogg",
+}
+
 const POOL_SIZE := 6
 
 var _streams: Dictionary = {}
 var _players: Array = []
 var _next_player: int = 0
 
+var _music_streams: Dictionary = {}
+var _music_player: AudioStreamPlayer
+var _current_music_key: String = ""
+
 var sfx_enabled: bool = true
 var vibration_enabled: bool = true
+var music_enabled: bool = true
 
 
 func _ready() -> void:
@@ -33,6 +43,19 @@ func _ready() -> void:
 		p.bus = "Master"
 		add_child(p)
 		_players.append(p)
+
+	_music_player = AudioStreamPlayer.new()
+	_music_player.bus = "Master"
+	_music_player.volume_db = -6.0
+	add_child(_music_player)
+
+	for key in MUSIC.keys():
+		var path: String = MUSIC[key]
+		if ResourceLoader.exists(path):
+			var stream = load(path)
+			if stream is AudioStreamOggVorbis:
+				stream.loop = true
+			_music_streams[key] = stream
 
 
 func play(key: String) -> void:
@@ -68,3 +91,22 @@ func play_failure() -> void:
 
 func play_reward() -> void:
 	play("reward")
+
+
+## Musique de fond en boucle. Ne redémarre pas si le même morceau
+## est déjà en cours (évite une coupure à chaque changement d'écran).
+func play_music(key: String) -> void:
+	if not music_enabled:
+		return
+	if _current_music_key == key and _music_player.playing:
+		return
+	if not _music_streams.has(key):
+		return
+	_current_music_key = key
+	_music_player.stream = _music_streams[key]
+	_music_player.play()
+
+
+func stop_music() -> void:
+	_music_player.stop()
+	_current_music_key = ""

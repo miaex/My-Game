@@ -1,0 +1,23 @@
+[
+	{ "language": "fr", "text": "Nouveau jour, {player_name} ! Je te souhaite une belle journée. Tu es une personne forte, et je suis convaincu que tu auras une journée aussi extra que toi-même. À très vite, {player_name} !" },
+	{ "language": "fr", "text": "Bonjour {player_name}. Juste un petit mot pour te dire que je pense à toi aujourd'hui. Prends soin de toi, et fonce — tu en es capable." },
+	{ "language": "fr", "text": "{player_name}, une nouvelle journée commence. Rappelle-toi : tu vaux largement plus que tu ne le penses. Passe une belle journée." },
+	{ "language": "fr", "text": "Salut {player_name} ! Aujourd'hui est un nouveau départ. Je crois en toi, comme toujours. Belle journée à toi." },
+	{ "language": "fr", "text": "{player_name}, n'oublie pas à quel point tu es capable. Je te souhaite une journée douce et pleine de petites victoires." },
+	{ "language": "fr", "text": "Bonjour toi. Où que tu sois aujourd'hui, {player_name}, sache que quelqu'un croit fort en toi. Belle journée." },
+	{ "language": "fr", "text": "{player_name}, une pensée pour bien démarrer ta journée : tu as déjà surmonté plus que tu ne le crois. Continue comme ça." },
+	{ "language": "fr", "text": "Hey {player_name}. Aujourd'hui, sois fière de qui tu es. Je te souhaite une journée à ton image : extraordinaire." },
+	{ "language": "fr", "text": "{player_name}, prends un instant pour respirer. Tu fais de ton mieux, et c'est largement suffisant. Belle journée." },
+	{ "language": "fr", "text": "Bonjour {player_name} ! Un petit rappel : tu es plus forte que tes doutes. Je te souhaite une journée lumineuse." },
+	{ "language": "fr", "text": "{player_name}, aujourd'hui encore, je suis convaincu que tu vas faire de belles choses. Passe une excellente journée." },
+	{ "language": "fr", "text": "Salut toi. {player_name}, n'oublie jamais que tu comptes, énormément. Belle journée à toi." },
+	{ "language": "fr", "text": "{player_name}, un nouveau jour, une nouvelle occasion de briller à ta façon. Je pense à toi. Belle journée." },
+	{ "language": "fr", "text": "Bonjour {player_name}. Sois douce avec toi-même aujourd'hui. Tu le mérites. À très vite." },
+	{ "language": "fr", "text": "{player_name}, où que la journée t'amène, avance avec confiance — je suis derrière toi. Belle journée." },
+
+	{ "language": "en", "text": "New day, {player_name}! I wish you a beautiful day. You're a strong person, and I'm convinced your day will be as amazing as you are. See you soon, {player_name}!" },
+	{ "language": "en", "text": "Good morning {player_name}. Just a quick note to say I'm thinking of you today. Take care of yourself, and go for it — you can do this." },
+	{ "language": "en", "text": "{player_name}, a new day is starting. Remember: you're worth so much more than you think. Have a beautiful day." },
+	{ "language": "en", "text": "Hi {player_name}! Today is a fresh start. I believe in you, as always. Have a wonderful day." },
+	{ "language": "en", "text": "{player_name}, don't forget how capable you are. Wishing you a gentle day full of small wins." }
+]

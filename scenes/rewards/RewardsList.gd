@@ -9,6 +9,7 @@ extends Control
 
 
 func _ready() -> void:
+	Audio.play_music("menu")
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.976, 0.925, 0.902)
 	background.add_theme_stylebox_override("panel", style)

@@ -21,6 +21,7 @@ SaveManager="*res://scripts/autoload/SaveManager.gd"
 Loc="*res://scripts/autoload/Loc.gd"
 SceneRouter="*res://scripts/autoload/SceneRouter.gd"
 Audio="*res://scripts/autoload/Audio.gd"
+DailyMessages="*res://scripts/autoload/DailyMessages.gd"
 
 [display]
 

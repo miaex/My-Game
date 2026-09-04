@@ -48,6 +48,7 @@ var _slot_style_locked: StyleBoxFlat
 
 
 func _ready() -> void:
+	Audio.play_music("menu")
 	_build_dynamic_styles()
 	_style_background()
 	_load_words()
