@@ -7,10 +7,10 @@ config_version=5
 [application]
 
 config/name="JieePlay"
-run/main_scene="res://scenes/onboarding/Onboarding.tscn"
+run/main_scene="res://scenes/boot/Boot.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://assets/images/icon.png"
-boot_splash/bg_color=Color(0.976, 0.925, 0.902, 1)
+boot_splash/bg_color=Color(0.965, 0.958, 0.948, 1)
 boot_splash/show_image=false
 boot_splash/minimum_display_time=0
 

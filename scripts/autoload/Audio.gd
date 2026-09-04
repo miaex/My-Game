@@ -27,9 +27,6 @@ var _music_streams: Dictionary = {}
 var _music_player: AudioStreamPlayer
 var _current_music_key: String = ""
 
-var sfx_enabled: bool = true
-var vibration_enabled: bool = true
-var music_enabled: bool = true
 
 
 func _ready() -> void:
@@ -59,7 +56,7 @@ func _ready() -> void:
 
 
 func play(key: String) -> void:
-	if not sfx_enabled:
+	if not GameData.settings.get("sfx_enabled", true):
 		return
 	if not _streams.has(key):
 		return
@@ -85,7 +82,7 @@ func play_success() -> void:
 ## vibration suivie d'un son qui exprime l'échec en douceur).
 func play_failure() -> void:
 	play("failure")
-	if vibration_enabled:
+	if GameData.settings.get("vibration_enabled", true):
 		Input.vibrate_handheld(140)
 
 
@@ -96,7 +93,7 @@ func play_reward() -> void:
 ## Musique de fond en boucle. Ne redémarre pas si le même morceau
 ## est déjà en cours (évite une coupure à chaque changement d'écran).
 func play_music(key: String) -> void:
-	if not music_enabled:
+	if not GameData.settings.get("music_enabled", true):
 		return
 	if _current_music_key == key and _music_player.playing:
 		return

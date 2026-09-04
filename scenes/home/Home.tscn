@@ -31,10 +31,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -90.0
+offset_left = -114.0
 offset_top = 42.0
 offset_right = -30.0
-offset_bottom = 102.0
+offset_bottom = 126.0
 text = "⚙"
 
 [node name="WelcomePanel" type="VBoxContainer" parent="."]

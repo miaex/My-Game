@@ -50,8 +50,17 @@ var statistics: Dictionary = {
 	"estimated_difficulty": 1,   # échelle simple 1..N, ajustée en jeu
 }
 
+## Préférences activables/désactivables par le joueur (§36).
+var settings: Dictionary = {
+	"sfx_enabled": true,
+	"music_enabled": true,
+	"vibration_enabled": true,
+}
+
 
 func _ready() -> void:
+	# Force le mode portrait par code, en plus du réglage projet, au cas où
+	# l'export Android ne respecte pas toujours ce réglage selon la version.
 	DisplayServer.screen_set_orientation(DisplayServer.SCREEN_PORTRAIT)
 
 	_load_categories()

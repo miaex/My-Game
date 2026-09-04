@@ -31,7 +31,7 @@ func _ready() -> void:
 
 func _style_background() -> void:
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.976, 0.925, 0.902)
+	style.bg_color = Color(0.965, 0.958, 0.948)
 	background.add_theme_stylebox_override("panel", style)
 	Decor.add_sparkles(self)
 

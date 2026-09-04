@@ -45,5 +45,11 @@
 
 	"rewards_title": "🎁 My Rewards",
 	"rewards_empty": "No rewards unlocked yet.\n\nFinish a full chapter (10 levels) to unlock one.",
-	"rewards_entry": "✨ Chapter {chapter} unlocked"
+	"rewards_entry": "✨ Chapter {chapter} unlocked",
+
+	"settings_title": "⚙️ Settings",
+	"settings_sound": "Sound",
+	"settings_music": "Music",
+	"settings_vibration": "Vibration",
+	"settings_reset": "Reset progress"
 }

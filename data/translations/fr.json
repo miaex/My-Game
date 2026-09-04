@@ -45,5 +45,11 @@
 
 	"rewards_title": "🎁 Mes récompenses",
 	"rewards_empty": "Aucune récompense débloquée pour l'instant.\n\nTermine un chapitre complet (10 niveaux) pour en débloquer une.",
-	"rewards_entry": "✨ Chapitre {chapter} débloqué"
+	"rewards_entry": "✨ Chapitre {chapter} débloqué",
+
+	"settings_title": "⚙️ Réglages",
+	"settings_sound": "Sons",
+	"settings_music": "Musique",
+	"settings_vibration": "Vibrations",
+	"settings_reset": "Réinitialiser la progression"
 }

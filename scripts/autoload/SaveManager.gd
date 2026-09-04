@@ -15,6 +15,7 @@ func _collect_save_data() -> Dictionary:
 		"progress": GameData.progress,
 		"category_choice_history": GameData.category_choice_history,
 		"statistics": GameData.statistics,
+		"settings": GameData.settings,
 	}
 
 
@@ -59,6 +60,9 @@ func load_game() -> bool:
 		GameData.category_choice_history = parsed["category_choice_history"]
 	if parsed.has("statistics"):
 		GameData.statistics = parsed["statistics"]
+	if parsed.has("settings"):
+		for key in parsed["settings"].keys():
+			GameData.settings[key] = parsed["settings"][key]
 
 	return true
 

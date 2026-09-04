@@ -39,13 +39,14 @@ func _ready() -> void:
 
 func _style_background() -> void:
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.976, 0.925, 0.902)
+	style.bg_color = Color(0.965, 0.958, 0.948)
 	background.add_theme_stylebox_override("panel", style)
-	Decor.add_sparkles(self)
+	Decor.add_blobs(self)
+	Decor.add_sparkles(self, 10)
 
 	var gear_style := StyleBoxFlat.new()
 	gear_style.bg_color = Color(1, 0.984, 0.973, 0.9)
-	gear_style.set_corner_radius_all(30)
+	gear_style.set_corner_radius_all(42)
 	gear_style.border_width_left = 2
 	gear_style.border_width_top = 2
 	gear_style.border_width_right = 2
@@ -54,7 +55,7 @@ func _style_background() -> void:
 	btn_settings_top.add_theme_stylebox_override("normal", gear_style)
 	btn_settings_top.add_theme_stylebox_override("hover", gear_style)
 	btn_settings_top.add_theme_color_override("font_color", Color(0.475, 0.353, 0.451))
-	btn_settings_top.add_theme_font_size_override("font_size", 30)
+	btn_settings_top.add_theme_font_size_override("font_size", 42)
 
 
 func _style_icon_buttons() -> void:

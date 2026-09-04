@@ -111,7 +111,7 @@ func _build_dynamic_styles() -> void:
 
 func _style_background() -> void:
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.976, 0.925, 0.902)
+	style.bg_color = Color(0.965, 0.958, 0.948)
 	background.add_theme_stylebox_override("panel", style)
 	Decor.add_sparkles(self)
 
@@ -148,8 +148,8 @@ func _populate_categories() -> void:
 		var btn := Button.new()
 		var label: String = cat.get("label_fr", "") if lang == "fr" else cat.get("label_en", "")
 		btn.text = "%s\n%s" % [cat.get("emoji", ""), label]
-		btn.custom_minimum_size = Vector2(280, 110)
-		btn.add_theme_font_size_override("font_size", 26)
+		btn.custom_minimum_size = Vector2(300, 130)
+		btn.add_theme_font_size_override("font_size", 30)
 		btn.pressed.connect(_on_category_selected.bind(cat.get("id", "")))
 		category_grid.add_child(btn)
 
@@ -279,12 +279,12 @@ func _rebuild_tiles() -> void:
 	for i in range(shuffled_letters.size()):
 		var btn := Button.new()
 		btn.text = shuffled_letters[i]
-		btn.custom_minimum_size = Vector2(72, 72)
+		btn.custom_minimum_size = Vector2(88, 88)
 		btn.add_theme_stylebox_override("normal", _tile_style_normal)
 		btn.add_theme_stylebox_override("hover", _tile_style_normal)
 		btn.add_theme_stylebox_override("disabled", _tile_style_disabled)
 		btn.add_theme_color_override("font_color", Color(1, 1, 1))
-		btn.add_theme_font_size_override("font_size", 36)
+		btn.add_theme_font_size_override("font_size", 42)
 		btn.pressed.connect(_on_tile_pressed.bind(i))
 		tiles_row.add_child(btn)
 		tile_buttons.append(btn)
@@ -298,12 +298,12 @@ func _rebuild_slots() -> void:
 	var word_length: int = current_word.length()
 	for pos in range(word_length):
 		var panel := PanelContainer.new()
-		panel.custom_minimum_size = Vector2(64, 72)
+		panel.custom_minimum_size = Vector2(80, 88)
 
 		var lbl := Label.new()
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		lbl.add_theme_font_size_override("font_size", 36)
+		lbl.add_theme_font_size_override("font_size", 42)
 
 		var is_locked: bool = locked_positions.has(pos)
 		if is_locked:

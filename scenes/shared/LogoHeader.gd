@@ -22,7 +22,7 @@ static var has_played_intro: bool = false
 
 
 func _ready() -> void:
-	custom_minimum_size = Vector2(0, 50)
+	custom_minimum_size = Vector2(0, 70)
 	_build_letters()
 	if not has_played_intro:
 		has_played_intro = true
@@ -33,7 +33,7 @@ func _build_letters() -> void:
 	for i in range(WORD.length()):
 		var lbl := Label.new()
 		lbl.text = WORD[i]
-		lbl.add_theme_font_size_override("font_size", 34)
+		lbl.add_theme_font_size_override("font_size", 50)
 		lbl.add_theme_color_override("font_color", COLORS[i % COLORS.size()])
 		add_child(lbl)
 
