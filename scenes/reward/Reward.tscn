@@ -16,45 +16,226 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="TopLogo" type="MarginContainer" parent="."]
+[node name="TopBar" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
 
-[node name="Logo" parent="TopLogo" instance=ExtResource("2")]
+[node name="TopBarHBox" type="HBoxContainer" parent="TopBar"]
+
+[node name="BtnBack" type="Button" parent="TopBar/TopBarHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+text = "‹"
+theme_override_font_sizes/font_size = 40
+
+[node name="LogoSpacer" type="Control" parent="TopBar/TopBarHBox"]
+size_flags_horizontal = 3
+
+[node name="Logo" parent="TopBar/TopBarHBox" instance=ExtResource("2")]
 layout_mode = 2
 
-[node name="Content" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
+[node name="LogoSpacer2" type="Control" parent="TopBar/TopBarHBox"]
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(70, 0)
+
+[node name="Scroll" type="ScrollContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -280.0
-offset_right = 280.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="Scroll"]
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 40
+
+[node name="Main" type="VBoxContainer" parent="Scroll/Margin"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 22
+
+[node name="TitleLabel" type="Label" parent="Scroll/Margin/Main"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+horizontal_alignment = 1
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 40
+
+[node name="SubtitleLabel" type="Label" parent="Scroll/Margin/Main"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+horizontal_alignment = 1
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 26
+
+[node name="ProgressScroll" type="ScrollContainer" parent="Scroll/Margin/Main"]
+custom_minimum_size = Vector2(0, 70)
+size_flags_horizontal = 3
+
+[node name="ProgressRow" type="HBoxContainer" parent="Scroll/Margin/Main/ProgressScroll"]
+unique_name_in_owner = true
+theme_override_constants/separation = 8
+
+[node name="InfoCard" type="PanelContainer" parent="Scroll/Margin/Main"]
+size_flags_horizontal = 3
+
+[node name="InfoMargin" type="MarginContainer" parent="Scroll/Margin/Main/InfoCard"]
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="InfoVBox" type="VBoxContainer" parent="Scroll/Margin/Main/InfoCard/InfoMargin"]
+theme_override_constants/separation = 10
+
+[node name="LotLabel" type="Label" parent="Scroll/Margin/Main/InfoCard/InfoMargin/InfoVBox"]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size = 24
+
+[node name="ChooseLabel" type="Label" parent="Scroll/Margin/Main/InfoCard/InfoMargin/InfoVBox"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 34
+
+[node name="DescLabel" type="Label" parent="Scroll/Margin/Main/InfoCard/InfoMargin/InfoVBox"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 26
+
+[node name="SelectLabel" type="Label" parent="Scroll/Margin/Main"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+horizontal_alignment = 1
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="CardGrid" type="GridContainer" parent="Scroll/Margin/Main"]
+unique_name_in_owner = true
+columns = 5
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+
+[node name="TipCard" type="PanelContainer" parent="Scroll/Margin/Main"]
+size_flags_horizontal = 3
+
+[node name="TipLabel" type="Label" parent="Scroll/Margin/Main/TipCard"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+horizontal_alignment = 1
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 24
+
+[node name="RevealOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RevealDim" type="ColorRect" parent="RevealOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.965, 0.958, 0.948, 0.98)
+
+[node name="RevealCenter" type="CenterContainer" parent="RevealOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RevealMargin" type="MarginContainer" parent="RevealOverlay/RevealCenter"]
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="RevealBox" type="VBoxContainer" parent="RevealOverlay/RevealCenter/RevealMargin"]
+size_flags_horizontal = 3
 theme_override_constants/separation = 28
 
-[node name="TitleLabel" type="Label" parent="Content"]
-size_flags_horizontal = 3
+[node name="RevealFragmentLabel" type="Label" parent="RevealOverlay/RevealCenter/RevealMargin/RevealBox"]
 unique_name_in_owner = true
+size_flags_horizontal = 3
 horizontal_alignment = 1
 autowrap_mode = 3
+theme_override_font_sizes/font_size = 20
 
-[node name="MessageCard" type="PanelContainer" parent="Content"]
+[node name="RevealCard" type="PanelContainer" parent="RevealOverlay/RevealCenter/RevealMargin/RevealBox"]
 
-[node name="MessageLabel" type="Label" parent="Content/MessageCard"]
-size_flags_horizontal = 3
+[node name="RevealTextLabel" type="Label" parent="RevealOverlay/RevealCenter/RevealMargin/RevealBox/RevealCard"]
 unique_name_in_owner = true
+size_flags_horizontal = 3
 horizontal_alignment = 1
 autowrap_mode = 3
+theme_override_font_sizes/font_size = 36
 
-[node name="BtnContinue" type="Button" parent="Content"]
+[node name="BtnNext" type="Button" parent="RevealOverlay/RevealCenter/RevealMargin/RevealBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 80)
 
-[connection signal="pressed" from="Content/BtnContinue" to="." method="_on_continue_pressed"]
+[node name="FinalOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="FinalDim" type="ColorRect" parent="FinalOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.965, 0.958, 0.948, 1)
+
+[node name="FinalScroll" type="ScrollContainer" parent="FinalOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_scroll_mode = 0
+
+[node name="FinalMargin" type="MarginContainer" parent="FinalOverlay/FinalScroll"]
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 140
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 40
+
+[node name="FinalBox" type="VBoxContainer" parent="FinalOverlay/FinalScroll/FinalMargin"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
+
+[node name="FinalTitle" type="Label" parent="FinalOverlay/FinalScroll/FinalMargin/FinalBox"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+horizontal_alignment = 1
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 38
+
+[node name="FinalMessageCard" type="PanelContainer" parent="FinalOverlay/FinalScroll/FinalMargin/FinalBox"]
+size_flags_horizontal = 3
+
+[node name="FinalMessageLabel" type="Label" parent="FinalOverlay/FinalScroll/FinalMargin/FinalBox/FinalMessageCard"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+horizontal_alignment = 1
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 32
+
+[node name="BtnFinalContinue" type="Button" parent="FinalOverlay/FinalScroll/FinalMargin/FinalBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 84)
+
+[connection signal="pressed" from="TopBar/TopBarHBox/BtnBack" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="RevealOverlay/RevealCenter/RevealMargin/RevealBox/BtnNext" to="." method="_on_reveal_next_pressed"]
+[connection signal="pressed" from="FinalOverlay/FinalScroll/FinalMargin/FinalBox/BtnFinalContinue" to="." method="_on_back_pressed"]

@@ -41,6 +41,17 @@
 
 	"reward_title": "Chapter {chapter} complete ✨",
 	"reward_continue": "CONTINUE",
+
+	"secret_title": "✨ Secret Reward ✨",
+	"secret_subtitle": "Collect 10 fragments to reveal your message",
+	"secret_lot_label": "SET {current}/{total}",
+	"secret_choose_title": "Pick a card",
+	"secret_choose_desc": "All 10 cards in this set hide the same fragment of your message. Follow your intuition!",
+	"secret_select_label": "Select 1 card out of 10",
+	"secret_tip": "💡 Every choice is a good one. What matters is the one that speaks to you. 💜",
+	"secret_fragment_label": "Fragment {current}/{total}",
+	"secret_continue": "CONTINUE",
+	"secret_final_title": "💌 Your full message",
 	"reward_variant_count_affectionate": "2",
 	"reward_message_affectionate_0": "{player_name},\n\nyou just finished this chapter…\n\nand I hope you already know one thing:\n\nyou're probably far more capable than you give yourself credit for.\n\nKeep going. There's more waiting for you. ❤️",
 	"reward_message_affectionate_1": "{player_name}, there's something I've wanted to tell you since this chapter began:\n\nI'm proud of you.\n\nNot just for the words you found — for the way you keep showing up. ❤️",
