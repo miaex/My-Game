@@ -43,6 +43,7 @@ unique_name_in_owner = true
 horizontal_alignment = 1
 
 [node name="EmptyLabel" type="Label" parent="Margin/Content"]
+size_flags_horizontal = 3
 unique_name_in_owner = true
 horizontal_alignment = 1
 autowrap_mode = 3

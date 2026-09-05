@@ -67,6 +67,7 @@ alignment = 1
 theme_override_constants/separation = 12
 
 [node name="FeedbackLabel" type="Label" parent="BoardMargin/Board"]
+size_flags_horizontal = 3
 unique_name_in_owner = true
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -143,6 +144,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 24
 
 [node name="CategoryTitle" type="Label" parent="CategoryOverlay/OverlayMargin/OverlayCenter/OverlayBox"]
+size_flags_horizontal = 3
 unique_name_in_owner = true
 horizontal_alignment = 1
 autowrap_mode = 3

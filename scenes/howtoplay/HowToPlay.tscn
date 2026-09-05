@@ -45,8 +45,10 @@ theme_override_font_sizes/font_size = 44
 
 [node name="Scroll" type="ScrollContainer" parent="Margin/VBox"]
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
 [node name="StepsBox" type="VBoxContainer" parent="Margin/VBox/Scroll"]
+size_flags_horizontal = 3
 unique_name_in_owner = true
 theme_override_constants/separation = 16
 

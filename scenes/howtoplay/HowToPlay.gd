@@ -28,8 +28,10 @@ func _ready() -> void:
 
 func _add_step_card(text: String) -> void:
 	var card := PanelContainer.new()
+	card.size_flags_horizontal = SIZE_EXPAND_FILL
 	var lbl := Label.new()
 	lbl.text = text
+	lbl.size_flags_horizontal = SIZE_EXPAND_FILL
 	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lbl.add_theme_font_size_override("font_size", 32)
 	card.add_child(lbl)

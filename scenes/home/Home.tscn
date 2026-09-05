@@ -40,6 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BodyLabel" type="Label" parent="WelcomePanel"]
+size_flags_horizontal = 3
 unique_name_in_owner = true
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -81,6 +82,7 @@ vertical_alignment = 1
 theme_override_font_sizes/font_size = 32
 
 [node name="GreetingLabel" type="Label" parent="MenuMargin/MenuPanel/GreetingRow"]
+size_flags_horizontal = 3
 unique_name_in_owner = true
 autowrap_mode = 3
 theme_override_font_sizes/font_size = 36
@@ -109,6 +111,7 @@ unique_name_in_owner = true
 theme_override_font_sizes/font_size = 32
 
 [node name="SecretSubtitle" type="Label" parent="MenuMargin/MenuPanel/SecretCard/SecretMargin/SecretHBox/SecretVBox"]
+size_flags_horizontal = 3
 unique_name_in_owner = true
 autowrap_mode = 3
 theme_override_font_sizes/font_size = 24
