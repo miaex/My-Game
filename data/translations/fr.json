@@ -52,6 +52,7 @@
 	"secret_fragment_label": "Fragment {current}/{total}",
 	"secret_continue": "CONTINUER",
 	"secret_final_title": "💌 Ton message complet",
+	"secret_assembling": "✨ Assemblage de ton message... ✨",
 	"reward_variant_count_affectionate": "3",
 	"reward_message_affectionate_0": "{player_name},\n\ntu viens de terminer ce chapitre…\n\net j'espère que tu comprends déjà une chose :\n\ntu es probablement beaucoup plus capable que tu ne le crois.\n\nContinue. La suite t'attend. ❤️",
 	"reward_message_affectionate_1": "{player_name},\n\nil y a quelque chose que je voulais te dire depuis le début de ce chapitre :\n\nje suis fier de toi.\n\nPas seulement pour les mots que tu as trouvés — pour la façon dont tu avances, tout simplement. ❤️",

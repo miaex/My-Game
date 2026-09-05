@@ -52,6 +52,7 @@
 	"secret_fragment_label": "Fragment {current}/{total}",
 	"secret_continue": "CONTINUE",
 	"secret_final_title": "💌 Your full message",
+	"secret_assembling": "✨ Putting your message together... ✨",
 	"reward_variant_count_affectionate": "2",
 	"reward_message_affectionate_0": "{player_name},\n\nyou just finished this chapter…\n\nand I hope you already know one thing:\n\nyou're probably far more capable than you give yourself credit for.\n\nKeep going. There's more waiting for you. ❤️",
 	"reward_message_affectionate_1": "{player_name}, there's something I've wanted to tell you since this chapter began:\n\nI'm proud of you.\n\nNot just for the words you found — for the way you keep showing up. ❤️",
